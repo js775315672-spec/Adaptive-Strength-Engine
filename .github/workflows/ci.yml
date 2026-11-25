@@ -1,0 +1,21 @@
+name: P0 CI
+on:
+  pull_request:
+  push:
+    branches: [dev/p0-bootstrap]
+permissions:
+  contents: read
+jobs:
+  regression:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest httpx
+      - run: python -m pip install -r AdaptiveStrength/requirements.txt
+      - run: python -m pytest -q AdaptiveStrength
