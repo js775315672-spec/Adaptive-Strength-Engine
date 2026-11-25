@@ -1,0 +1,15 @@
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.db
+*.sqlite*
+*.db-*
+.env*
+.venv/
+__pycache__/
+.pytest_cache/
+archive/
+data/
+models/
+*.zip
